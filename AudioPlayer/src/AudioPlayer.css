@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+input[type="range"]::-webkit-slider-thumb {
+	/* @apply appearance-none w-4 h-4 bg-blue-700 dark:bg-blue-400 rounded-full cursor-pointer; */
+	@apply appearance-none w-4 h-4 bg-green-500 rounded-full cursor-pointer;
+}
+.slider-red-alert::-webkit-slider-thumb {
+	/* background-color: #fb2c36 !important; */
+	@apply !bg-red-500;
+}
