@@ -1,11 +1,12 @@
 import React from "react";
-import Sidebar from "./Sidebar1";
+import Sidebar from "./Sidebar3";
 
 const App = () => {
 	return (
 		<>
 			<Sidebar />
-			<main>
+			<main className="ml-24">
+				{/* There is no need of `ml-24` if you are using `Sidebar1.jsx` or `Sidebar2.jsx` in the <main> tag. Use it only, when you are using `Sidebar3.jsx` */}
 				<div>Line 1</div>
 				<div>Line 2</div>
 				<div>Line 3</div>

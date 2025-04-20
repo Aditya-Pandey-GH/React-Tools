@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import Separator from "./Separator";
 
 const Sidebar = () => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
 	const sidebarItems = [
 		{
 			id: "homePage",
@@ -40,6 +42,7 @@ const Sidebar = () => {
 			path: "/Connect",
 		},
 	]; // Add the sidebar items according to your project requirements
+
 	return (
 		<>
 			{/* Empty Navbar Alias */}
@@ -52,6 +55,7 @@ const Sidebar = () => {
 					</ul>
 				</nav>
 			</section> */}
+			{/* 👆 Remove the above given section if you want. It was just for experiment purposes and has no relevance in the code 👆 */}
 
 			{/* Hamburger Button to Toggle Navbar */}
 			<section>
@@ -94,7 +98,58 @@ const Sidebar = () => {
 						<div className="pl-20 w-full h-18 flex items-center">
 							<h1 className="w-full">TOPIC / TITLE</h1>
 						</div>
+
 						{/* Change the value of height from '100vh-5rem' to appropriate value according to your project requirements 👇 */}
+						<div className="w-full h-[calc(100dvh-5rem)] overflow-y-auto">
+							{/* Sidebar Options will go here */}
+							<ul className="w-full flex flex-col">
+								{/* <ul className="w-full h-[calc(100%-5rem)] flex flex-col"> */}
+								{/* Modify the sidebar items according to your project requirements */}
+								{sidebarItems.map((item) => (
+									<li key={item.id} className=" hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all">
+										<a href={item.path} className="flex items-center gap-2 p-4">
+											<img
+												src={item.logo}
+												alt={item.name}
+												className="w-8 h-8 not-dark:drop-shadow-black not-dark:drop-shadow-xs/50"
+											/>
+											{item.name}
+										</a>
+									</li>
+								))}
+							</ul>
+
+							{/* Separator */}
+							<Separator />
+
+							{/* Other Options */}
+							<ul className="w-full flex flex-col">
+								<li className=" hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all">
+									<a href="/settings" target="_blank" className="flex items-center gap-2 p-4">
+										<img
+											src="https://static.vecteezy.com/system/resources/thumbnails/027/312/275/small_2x/setting-symbol-isolated-general-ui-icon-set-concept-3d-render-illustration-png.png"
+											// src="https://png.pngtree.com/png-vector/20240131/ourmid/pngtree-cogwheel-gear-setting-symbol-ai-generative-png-image_11577392.png"
+											alt="Settings"
+											className="w-8 h-8 not-dark:drop-shadow-black not-dark:drop-shadow-xs/50"
+										/>
+										Settings
+									</a>
+								</li>
+								<li className=" hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all">
+									<button className="flex items-center gap-2 p-4">
+										<img
+											src="https://png.pngtree.com/png-vector/20230308/ourmid/pngtree-toogle-swich-day-and-night-or-light-dark-mode-with-scenery-vector-png-image_6637908.png"
+											// src="https://png.pngtree.com/png-vector/20230308/ourmid/pngtree-toogle-swich-day-and-night-or-light-dark-mode-with-scenery-vector-png-image_6637912.png"
+											alt="Settings"
+											className="w-8 h-8 not-dark:drop-shadow-black not-dark:drop-shadow-xs/50"
+										/>
+										Theme Toggler
+									</button>
+								</li>
+							</ul>
+						</div>
+
+						{/* Other Options like Settings, Logout, Theme Toggler, etc. (Optional) */}
 						<div className="w-full h-[calc(100dvh-5rem)] overflow-y-auto">
 							{/* Sidebar Options will go here */}
 							<ul className="w-full h-[calc(100%-5rem)] flex flex-col">
@@ -107,7 +162,7 @@ const Sidebar = () => {
 												alt={item.name}
 												className="w-8 h-8 not-dark:drop-shadow-black not-dark:drop-shadow-xs/50"
 											/>
-											{item.name}
+											{"item.name"}
 										</a>
 									</li>
 								))}

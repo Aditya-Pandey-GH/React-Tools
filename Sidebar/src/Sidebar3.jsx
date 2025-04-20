@@ -12,36 +12,20 @@ const Sidebar = () => {
 			path: "/",
 		},
 		{
-			id: "skillPage",
-			name: "Skills",
+			id: "aboutPage",
+			name: "About Us",
 			logo: "https://cdn.jsdelivr.net/gh/GameZonedYT/Logos@main/PortfolioAdi/Pages/skills.png",
-			path: "/Skills",
+			path: "/AboutUs",
 		},
 		{
-			id: "projPage",
-			name: "Projects",
-			logo: "https://cdn.jsdelivr.net/gh/GameZonedYT/Logos@main/PortfolioAdi/Pages/projects.png",
-			path: "/Projects",
-		},
-		{
-			id: "designPage",
-			name: "Designs",
-			logo: "https://cdn.jsdelivr.net/gh/GameZonedYT/Logos@main/PortfolioAdi/Pages/design.png",
-			path: "/Designs",
-		},
-		{
-			id: "milestonePage",
-			name: "Milestones",
-			logo: "https://cdn.jsdelivr.net/gh/GameZonedYT/Logos@main/PortfolioAdi/Pages/achievements.png",
-			path: "/Milestones",
-		},
-		{
-			id: "connectPage",
-			name: "Connect",
+			id: "contactPage",
+			name: "Contact Us",
 			logo: "https://cdn.jsdelivr.net/gh/GameZonedYT/Logos@main/PortfolioAdi/Pages/connect.png",
-			path: "/Connect",
+			path: "/Contact",
 		},
 	]; // Add the sidebar items according to your project requirements
+	// Make sure to use the unicode character ` ` instead of regular Space in the Names, otherwise you may notice some minor styling issues.
+	// To use the unicode character ` `, hold Alt key and type "0160" using numpad. Use on-screen keyboard, if your keyboard doesn't have a numpad.
 
 	return (
 		<>
@@ -58,9 +42,9 @@ const Sidebar = () => {
 			{/* 👆 Remove the above given section if you want. It was just for experiment purposes and has no relevance in the code 👆 */}
 
 			{/* Hamburger Button to Toggle Navbar */}
-			<section>
+			<section className="">
 				<button
-					className={`w-12 h-12 m-4 p-4 fixed right-0 rounded-full flex flex-col cursor-pointer space-y-1 bg-neutral-200 dark:bg-neutral-700 active:bg-neutral-200 dark:active:bg-neutral-700 transition-all z-50 ${
+					className={`w-12 h-12 m-4 p-4 fixed rounded-full flex flex-col cursor-pointer space-y-1 bg-neutral-200 dark:bg-neutral-700 active:bg-neutral-200 dark:active:bg-neutral-700 transition-all z-50 ${
 						isSidebarOpen ? "bg-neutral-200 dark:bg-neutral-700" : ""
 					}`}
 					onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -88,32 +72,45 @@ const Sidebar = () => {
 
 			{/* Sidebar Content */}
 			<section
-				className={`w-0 h-screen fixed right-0 bg-neutral-100 dark:bg-neutral-800 transition-all ease-in-out duration-300 z-40 ${
+				className={`w-20 h-screen fixed bg-neutral-100 dark:bg-neutral-800 transition-all ease-in-out duration-300 z-40 ${
 					isSidebarOpen ? "w-full sm:w-72" : ""
 				}`}
 			>
-				<nav className={`${isSidebarOpen ? "opacity-100" : "opacity-0"} transition-opacity ease-in-out duration-300`}>
+				<nav className="">
 					<div className="flex flex-col">
 						{/* Heading of the current page (Optional) */}
-						<div className="pl-8 pr-20 w-full h-18 flex items-center">
-							<h1 className="w-full">TOPIC / TITLE</h1>
+						<div className="pl-20 w-full h-20 flex items-center">
+							<h1
+								className={`w-full font-bold transition-opacity ease-in-out duration-300 ${
+									isSidebarOpen ? "opacity-100" : "opacity-0"
+								}`}
+							>
+								CURRENT PAGE NAME
+							</h1>
 						</div>
 
 						{/* Change the value of height from '100vh-5rem' to appropriate value according to your project requirements 👇 */}
-						<div className="w-full h-[calc(100dvh-5rem)] overflow-y-auto">
+						<div className="w-full h-[calc(100dvh-5rem)] overflow-y-auto overflow-x-hidden">
 							{/* Sidebar Options will go here */}
 							<ul className="w-full flex flex-col">
 								{/* <ul className="w-full h-[calc(100%-5rem)] flex flex-col"> */}
 								{/* Modify the sidebar items according to your project requirements */}
 								{sidebarItems.map((item) => (
-									<li key={item.id} className=" hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all">
-										<a href={item.path} className="flex items-center gap-2 p-4">
+									<li key={item.id} className="hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all">
+										<a href={item.path} className="flex items-center gap-2 p-4 cursor-pointer">
 											<img
 												src={item.logo}
 												alt={item.name}
-												className="w-8 h-8 not-dark:drop-shadow-black not-dark:drop-shadow-xs/50"
+												className="w-8 h-8 mx-2 not-dark:drop-shadow-black not-dark:drop-shadow-xs/50"
 											/>
-											{item.name}
+											<span
+												className={`transition-opacity ease-in-out duration-300 ${
+													isSidebarOpen ? "opacity-100" : "opacity-0"
+												}`}
+											>
+												{item.name}
+												{/* {isSidebarOpen ? item.name : item.name.split(" ").join(" ")} */}
+											</span>
 										</a>
 									</li>
 								))}
@@ -122,29 +119,56 @@ const Sidebar = () => {
 							{/* Separator */}
 							<Separator />
 
-							{/* Other Options */}
+							{/* Other Utilities will go here */}
+							{/* These are completely optional to use. Also, you can choose to use only some of them */}
 							<ul className="w-full flex flex-col">
-								<li className=" hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all">
-									<a href="/settings" target="_blank" className="flex items-center gap-2 p-4">
+								<li className="hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all">
+									<a href="/settings" target="_blank" className="flex items-center gap-2 p-4 cursor-pointer">
 										<img
 											src="https://static.vecteezy.com/system/resources/thumbnails/027/312/275/small_2x/setting-symbol-isolated-general-ui-icon-set-concept-3d-render-illustration-png.png"
 											// src="https://png.pngtree.com/png-vector/20240131/ourmid/pngtree-cogwheel-gear-setting-symbol-ai-generative-png-image_11577392.png"
 											alt="Settings"
-											className="w-8 h-8 not-dark:drop-shadow-black not-dark:drop-shadow-xs/50"
+											className="w-8 h-8 mx-2 not-dark:drop-shadow-black not-dark:drop-shadow-xs/50"
 										/>
-										Settings
+										<span
+											className={`${isSidebarOpen ? "opacity-100" : "opacity-0"} transition-opacity ease-in-out duration-300`}
+										>
+											Settings
+										</span>
 									</a>
 								</li>
-								<li className=" hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all">
-									<button className="flex items-center gap-2 p-4">
+								<li className="hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all">
+									<button className="flex items-center gap-2 p-4 cursor-pointer">
 										<img
 											src="https://png.pngtree.com/png-vector/20230308/ourmid/pngtree-toogle-swich-day-and-night-or-light-dark-mode-with-scenery-vector-png-image_6637908.png"
 											// src="https://png.pngtree.com/png-vector/20230308/ourmid/pngtree-toogle-swich-day-and-night-or-light-dark-mode-with-scenery-vector-png-image_6637912.png"
 											alt="Settings"
-											className="w-8 h-8 not-dark:drop-shadow-black not-dark:drop-shadow-xs/50"
+											className="w-8 h-8 mx-2 not-dark:drop-shadow-black not-dark:drop-shadow-xs/50"
 										/>
-										Theme Toggler
+										<span
+											className={`transition-opacity ease-in-out duration-300 ${isSidebarOpen ? "opacity-100" : "opacity-0"}`}
+										>
+											Switch Theme
+										</span>
 									</button>
+								</li>
+								<li className="hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all">
+									<a href="https://aditya-pandey.vercel.app" target="_blank" className="flex items-center gap-2 p-4 cursor-pointer">
+										<img
+											src="https://play-lh.googleusercontent.com/aMb_Qiolzkq8OxtQZ3Af2j8Zsp-ZZcNetR9O4xSjxH94gMA5c5gpRVbpg-3f_0L7vlo"
+											// src="https://pixcap.com/cdn/library/templates/e2d81c01-427b-4af0-8f11-66ce58878421/thumbnail/853456ab-729a-4f9f-bcf8-c07e0c0e09b8_transparent_800_800.webp"
+											// src="https://png.pngtree.com/png-vector/20240629/ourmid/pngtree-money-3d-icon-finance-png-image_12920735.png"
+											// src="https://cdn3d.iconscout.com/3d/premium/thumb/donation-box-3d-icon-download-in-png-blend-fbx-gltf-file-formats--charity-donate-money-pack-healthcare-medical-icons-10052943.png"
+											// src="https://img.pikbest.com/element_our/20230718/bg/4d5a5afc1d5be.png"
+											alt="Settings"
+											className="w-8 h-8 mx-2 not-dark:drop-shadow-black not-dark:drop-shadow-xs/50 rounded-md"
+										/>
+										<span
+											className={`transition-opacity ease-in-out duration-300 ${isSidebarOpen ? "opacity-100" : "opacity-0"}`}
+										>
+											Support Us
+										</span>
+									</a>
 								</li>
 							</ul>
 						</div>
@@ -171,6 +195,9 @@ const Sidebar = () => {
 					</div>
 				</nav>
 			</section>
+
+			{/* Blank Section so that the content of the body does not overlap with the Hamburger icon */}
+			{/* <section className="h-20"></section> */}
 		</>
 	);
 };
