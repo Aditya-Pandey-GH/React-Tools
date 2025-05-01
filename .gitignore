@@ -5,3 +5,6 @@ node_modules
 # Files
 package-lock.json
 tailwind.config.js
+
+# Temporarily Not Pushed
+Custom-Cursor
